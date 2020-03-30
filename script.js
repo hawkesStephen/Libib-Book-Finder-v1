@@ -8,14 +8,12 @@ const importFile = process.env.IMPORT
 const exportFile = process.env.EXPORT
 
 const search = async (term, author) => {
-    console.log(term)
-    console.log(author)
     try {
         const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${term}+inauthor:${author}`)
         return findISBN(response.data)
     }
     catch (error) {
-        console.error(`async error: ${error}`)
+        console.error(`async error: at ${term} and ${author}: ${error}`)
     }
 }
 
