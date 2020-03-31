@@ -9,6 +9,7 @@ const exportFile = process.env.EXPORT
 
 const search = async (term, author) => {
     try {
+        console.log(author)
         const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${term}+inauthor:${author}`)
         return findISBN(response.data)
     }
